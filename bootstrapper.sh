@@ -69,6 +69,7 @@ function install_dependency_via_brew {
 }
 
 function install_brew {
+  eval "export PATH='/usr/local/bin:/usr/local/sbin:~/bin:$PATH'"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 

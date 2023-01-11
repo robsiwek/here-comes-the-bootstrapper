@@ -1,8 +1,8 @@
 #!/bin/bash
-# 2017 Rob Siwek
+# © Rob Siwek
 
-# constants
-required_bins=("brew" "docker" "yarn" "kubectl" "terraform" "awsume")
+# dependencies/packages
+required_bins=("brew" "docker" "yarn" "kubectl" "terraform" "awsume" "node")
 username=$(whoami)
 
 # text styles
@@ -13,9 +13,9 @@ red=${normal}$(tput setaf 1)
 green=${normal}$(tput setaf 2)
 
 # unicode emojis
-coffee_emoji="\xe2\x98\x95 "
+traffic_emoji="\xf0\x9f\x9a\xa6 "
 check_emoji="\xe2\x9c\x94 "
-skull_emoji="\xe2\x98\xa0 "
+not_found_emoji="\xe2\x9c\x96 "
 bye_emoji="\xf0\x9f\x91\x8b "
 
 # vars
@@ -44,19 +44,19 @@ X19fX1/ilbHilbJfX19fX19fX+KVseKVsl9fX19fX19f4pWxIOKVsl9fX19fX+KVsSDilbJfX19fX19f
 }
 
 function print_header_info {
-  printf "\n ${boldcyan}Hey ${username}!\n Quickly checking your local environment..${coffee_emoji}\n\n${normal}"
+  printf "\n ${boldcyan}Hey ${username}, great to have you here!\n Let's quickly check your local environment..${traffic_emoji}\n\n${normal}"
 }
 
 function print_bye {
-  printf "\nYou're all set! Happy Coding ${bye_emoji}\n\n"
+  printf "\nHappy Coding ${bye_emoji}\n\n"
 }
 
 function print_success {
-  printf "${check_emoji}${bold} $1 ${green}installed\n${normal}"
+  printf "${green}${check_emoji}${normal}${bold} $1 ${green}installed\n${normal}"
 }
 
 function print_error {
-  printf "${skull_emoji}${bold} $1 ${red}not installed\n${normal}"
+  printf "${red}${not_found_emoji}${normal}${bold} $1 ${red}not installed\n${normal}"
 }
 
 function check_env {
@@ -126,7 +126,7 @@ function ask_to_install_missing_bins {
   fi
   while true; do
       printf "\n\n${boldcyan}"
-      read -p "Do you want to install the missing bins? Press y to continue, n to cancel: ${normal}" yn
+      read -p "Do you want to install the missing binaries? Press [y] to continue, [n] to cancel: ${normal}" yn
       case $yn in
           [Yy]*) install_bins; break;;
           [Nn]*) print_bye; exit;;

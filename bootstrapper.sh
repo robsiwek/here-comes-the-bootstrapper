@@ -2,7 +2,7 @@
 # © Rob Siwek
 
 # dependencies/packages
-required_bins=("brew" "docker" "yarn" "kubectl" "terraform" "awsume" "node" "aws-iam-authenticator" "kubectx")
+required_bins=("brew" "docker" "yarn" "kubectl" "terraform" "awsume" "node" "aws-iam-authenticator" "kubectx" "eksctl")
 username=$(whoami)
 
 # text styles
